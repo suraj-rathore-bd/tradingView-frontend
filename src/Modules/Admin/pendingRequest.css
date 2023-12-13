@@ -1,0 +1,23 @@
+
+  /* Style the pagination container */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Style the pagination item */
+  .pagination li {
+    display: inline;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  /* Style the active pagination item */
+  .pagination .active {
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 50%;
+  }
+  

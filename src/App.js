@@ -29,6 +29,7 @@ import AccountDetails from "./Modules/Admin/AccountDetails";
 import PrivacyPolicy from "./Modules/Main/PrivacyPolicy";
 import TermCondation from "./Modules/Main/TermCondation";
 import NewHome from "./Modules/Main/NewHome/NewHome";
+import Test from "./Modules/Test";
 
 
 console.log("check", window.location.pathname.includes("adminpanel"))
@@ -52,7 +53,7 @@ function App() {
         <ScrollToTop /> {/* Add the ScrollToTop component here, outside of Routes */}
         <Routes>
        
-          <Route index path="/test" element={<Home />} />
+          <Route index path="/test1" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
           <Route path="/contact" element={<Contact />} />
@@ -74,6 +75,7 @@ function App() {
           <Route path="/AccountDetails" element={<AccountDetails />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
           <Route path="/termcondation" element={<TermCondation/>}/>
+          <Route path="/test" element={<Test/>}/>
           <Route path="/" element={<NewHome/>}/>
           {/* <Route path ="/adminpanel" element={<AdminNavbar/>}/> */}
           {/* <Route path ="/user" element={<UserNavbar/>}/> */}

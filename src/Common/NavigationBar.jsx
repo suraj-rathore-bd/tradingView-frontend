@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PhoneButton from "../Modules/Main/PhoneButton";
 
-
 const NavigationBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -27,7 +26,7 @@ const NavigationBar = () => {
                 className="h-5 w-5 text-white pr-3"
               />
               <span className="text-white font-semibold text-lg">
-              info@Trading.com
+                info@Trading.com
               </span>
             </p>
             {/* <p className="pl-10">
@@ -49,7 +48,6 @@ const NavigationBar = () => {
                 icon={faLink}
                 className="h-5 w-5 text-white pr-3 hover:cursor-pointer"
               />
-              
             </a>
             <a
               href="https://www.moneycontrol.com/news/business/stocks/"
@@ -61,8 +59,8 @@ const NavigationBar = () => {
                 className="h-4 w-4 text-white pr-3 hover:cursor-pointer"
               />
             </a>
-           
-             <a
+
+            <a
               href="https://www.moneycontrol.com/portfolio-management/portfolio-investment-signup.php"
               target="_blank"
               rel="noopener noreferrer"
@@ -72,13 +70,12 @@ const NavigationBar = () => {
                 className="h-4 w-4 text-white pr-3 hover:cursor-pointer"
               />
             </a>
-           
           </div>
         </div>
       </div>
 
-      <nav className="bg-white shadow-md sticky top-0 z-50">
-        <div className=" flex justify-between items-center px-5 md:px-10 py-2">
+      <nav className="bg-white shadow-md sticky top-0 z-50 bg-white">
+        <div className=" flex justify-between items-center px-5 md:px-10 py-2 bg-white">
           <div className="">
             <Link to="/">
               {/* <img src={LogoImage} className="w-[70px] h-[60px]"></img> */}
@@ -90,7 +87,7 @@ const NavigationBar = () => {
               <img src={whatsapp} width="50" />
             </Link>
           </div>
-          <PhoneButton/>
+          <PhoneButton />
 
           <div className="lg:hidden">
             {/* Hamburger Icon */}

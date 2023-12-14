@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import { servieUrl } from "../../env/env";
-import { useNavigate } from "react-router-dom";
+import A from "../../Assests/HomePageImages/Trading.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAddressCard, faBuildingColumns, faCalendar, faCalendarDay, faCreditCard, faEnvelope, faIdCard, faLock, faPhone, faPiggyBank, faUser } from '@fortawesome/free-solid-svg-icons';
+
 function Register() {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [username, setUserName] = useState("");
@@ -15,8 +19,8 @@ function Register() {
   const [bankaccount, setBankAccount] = useState("");
   const [ifsccode, setIfscCode] = useState("");
   const [aadhaarcardnumber, setAadhaarCardNumber] = useState("");
-  const [checkOtp, setOtp] = useState(false)
-  const [otpValue, setOtpValue] = useState(null)
+  const [checkOtp, setOtp] = useState(false);
+  const [otpValue, setOtpValue] = useState(null);
   const navigate = useNavigate(); // Access the navigation function
 
   const [errors, setErrors] = useState({
@@ -37,26 +41,26 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-  const emailSending =()=>{
+  const emailSending = () => {
     var formdata = new FormData();
-formdata.append("to", email);
-formdata.append("userid", username);
-formdata.append("password",password)
-var requestOptions = {
-  method: 'POST',
-  body: formdata,
-  redirect: 'follow'
-};
+    formdata.append("to", email);
+    formdata.append("userid", username);
+    formdata.append("password", password);
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
 
-fetch(servieUrl.otpurl + "rolebased/email/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-  }
+    fetch(servieUrl.otpurl + "rolebased/email/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
   const sendOtp = (e) => {
     e.preventDefault();
     const newErrors = {};
-    setUserName(Math.floor(100000 + Math.random() * 900000))
+    setUserName(Math.floor(100000 + Math.random() * 900000));
     if (!username) {
       newErrors.username = "Username is required";
     }
@@ -110,79 +114,73 @@ fetch(servieUrl.otpurl + "rolebased/email/", requestOptions)
     // Update the errors state with the new errors
     setErrors(newErrors);
 
-
-
     setIsLoading(true);
-
 
     // If there are no errors, submit the form
     if (Object.values(newErrors).every((error) => !error)) {
-      setOtp(true)
+      setOtp(true);
       var formdata = new FormData();
       formdata.append("number", phonenumber);
 
       var requestOptions = {
-        method: 'POST',
+        method: "POST",
         body: formdata,
-        redirect: 'follow'
+        redirect: "follow",
       };
 
       fetch(servieUrl.otpurl + "rolebased/sendOTP/", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-    }
-    else {
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+    } else {
       setIsLoading(false);
     }
-
-  }
+  };
 
   const verifyOtp = (e) => {
-e.preventDefault()
+    e.preventDefault();
     var formdata = new FormData();
     formdata.append("number", phonenumber);
     formdata.append("otp", otpValue);
 
     var requestOptions = {
-      method: 'PUT',
+      method: "PUT",
       body: formdata,
-      redirect: 'follow'
+      redirect: "follow",
     };
 
     fetch(servieUrl.otpurl + "rolebased/checkOTP/", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-
+      .then((response) => response.json())
+      .then((result) => {
         if (result.status) {
-          handleSubmit()
+          handleSubmit();
         } else {
-          alert("otp is wrong entered")
+          alert("otp is wrong entered");
         }
       })
-      .catch(error => console.log('error', error));
-  }
-
-const sendingRegsiter=()=>{
-  var formdata = new FormData();
-  formdata.append("email", email);
-  formdata.append("password", password);
-  
-  var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
+      .catch((error) => console.log("error", error));
   };
-  
-  fetch( servieUrl.otpurl + "rolebased/PasswordUpdate/", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
+
+  const sendingRegsiter = () => {
+    var formdata = new FormData();
+    formdata.append("email", email);
+    formdata.append("password", password);
+
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    fetch(servieUrl.otpurl + "rolebased/PasswordUpdate/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
 
   const handleSubmit = async () => {
-    emailSending()
-    sendingRegsiter()
+    emailSending();
+    sendingRegsiter();
     // debugger
     // Disable the button to prevent multiple submissions
 
@@ -201,8 +199,6 @@ const sendingRegsiter=()=>{
         formdata.append("ifsccode", ifsccode);
         formdata.append("aadhaarCardNumber", aadhaarcardnumber);
 
-
-
         var requestOptions = {
           method: "POST",
           body: formdata,
@@ -213,7 +209,7 @@ const sendingRegsiter=()=>{
           servieUrl.otpurl + "rolebased/register/",
           requestOptions
         );
-       
+
         setUserName("");
         setPassword("");
         setConfirmPassword("");
@@ -230,7 +226,7 @@ const sendingRegsiter=()=>{
         setTimeout(() => {
           navigate("/loginandregister");
         }, 3000);
-           
+
         // Show a success alert
         // alert("Registration successful!");
       } catch (error) {
@@ -243,15 +239,17 @@ const sendingRegsiter=()=>{
     }
     setRegistrationSuccess(true);
 
-    localStorage.setItem("userData",username);
+    localStorage.setItem("userData", username);
   };
 
   return (
     <>
-      {checkOtp ?
+      {checkOtp ? (
         <div className="mt-16 flex items-center justify-center">
           <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">OTP Verification</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+              OTP Verification
+            </h2>
             <form onSubmit={verifyOtp}>
               <div className="mb-4">
                 {/* <label htmlFor="email" className="block text-gray-600">Email</label> */}
@@ -266,327 +264,342 @@ const sendingRegsiter=()=>{
                 />
               </div>
               <div className="mb-4">
-              <button
-              className="bg-[#2774AE] mt-8 w-full py-2 text-white text-lg font-semibold rounded-lg"
-              type="submit"
-               // Disable the button when isLoading is true
-            >
-
-
+                <button
+                  className="bg-[#2774AE] mt-8 w-full py-2 text-white text-lg font-semibold rounded-lg"
+                  type="submit"
+                  // Disable the button when isLoading is true
+                >
                   Verify OTP
                 </button>
               </div>
             </form>
           </div>
         </div>
-
-        :
-        <div className="w-[80%] sm:w-[50%] md:w-[60%] lg:w-[60%] xl:w-[35%] p-5 sm:p-10 shadow-2xl rounded-lg  mx-auto mt-10">
-          <div className="text-lg md:text-3xl font-bold text-[#0066b2] text-center">
-            Register
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-10 mx-10 md:mx-20 lg:mx-32 mt-10 md:mt-16">
+          <div className="flex justify-center items-center">
+            <div className=" ">
+            <img src={A} class="hidden md:block" />
+            </div>
           </div>
-
           <form onSubmit={sendOtp}>
-            {/* <p className="mt-10">
-              <label className="font-semibold text-lg">Username</label>
-              <input
-                type="text"
-                className="w-full p-2 border-2 mt-3 rounded-lg"
-                placeholder="Enter Username"
-                id="uname"
-                name="uname"
-                value={username}
-                onChange={(e) => setUserName(e.target.value)}
-              ></input>
-              {errors.username && (
-                <p className="text-red-500 mt-2">{errors.username}</p>
+            <h3 className="text-lg md:text-3xl font-bold text-[#0066b2] ">
+              Register
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5 mt-5">
+              <p className="mt-2">
+                <label className="font-semibold text-lg">First Name</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                  <input
+                    type="text"
+                    className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                    placeholder="First Name"
+                    id="fname"
+                    name="fname"
+                    value={firstname}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  ></input>
+                </div>
+                {errors.firstname && (
+                  <p className="text-red-500 mt-2">{errors.firstname}</p>
+                )}
+              </p>
+
+              <p className="mt-2">
+                <label className="font-semibold text-lg">Last Name</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="text"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Last Name"
+                  id="lname"
+                  name="lname"
+                  value={lastname}
+                  onChange={(e) => setLastName(e.target.value)}
+                ></input>
+                </div>
+                {errors.lastname && (
+                  <p className="text-red-500 mt-2">{errors.lastname}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">Email</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="email"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter Email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></input>
+                </div>
+                {errors.email && (
+                  <p className="text-red-500 mt-2">{errors.email}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">Phone Number</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="tel"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Phone Number"
+                  id="pnumber"
+                  name="pnumber"
+                  value={phonenumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                ></input>
+                </div>
+                {errors.phonenumber && (
+                  <p className="text-red-500 mt-2">{errors.phonenumber}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">Date Of Birth</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faCalendarDay}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="date"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter DOB"
+                  id="dob"
+                  name="dob"
+                  value={dateofbirth}
+                  onChange={(e) => setDateOfBirth(e.target.value)}
+                ></input>
+                </div>
+                {errors.dateofbirth && (
+                  <p className="text-red-500 mt-2">{errors.dateofbirth}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">Password</label>
+                <div className="relative flex ju item-center">
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500 "
+                  />
+                <input
+                  type="password"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter Password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
+                </div>
+                {errors.password && (
+                  <p className="text-red-500 mt-2">{errors.password}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">
+                  Confirm Password
+                </label>
+                <div className="relative flex ju item-center">
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500 "
+                  />
+                <input
+                  type="password"
+                  className="w-full  p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter Confirm Password"
+                  id="cpassword"
+                  name="cpassword"
+                  value={confirmpassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                ></input>
+                </div>
+                {errors.confirmpassword && (
+                  <p className="text-red-500 mt-2">{errors.confirmpassword}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">Pan Card Number</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faAddressCard}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="text"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter PanCard Number"
+                  id="pcard"
+                  name="pcard"
+                  value={pancard}
+                  onChange={(e) => setPanCard(e.target.value)}
+                ></input>
+                </div>
+                {errors.pancard && (
+                  <p className="text-red-500 mt-2">{errors.pancard}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">Bank Account</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faBuildingColumns}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="text"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter Bank Account"
+                  id="bankaccount"
+                  name="bankaccount"
+                  value={bankaccount}
+                  onChange={(e) => setBankAccount(e.target.value)}
+                ></input>
+                </div>
+                {errors.bankaccount && (
+                  <p className="text-red-500 mt-2">{errors.bankaccount}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">IFSC Code</label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faCreditCard}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="text"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
+                  placeholder="Enter IFSC Code"
+                  id="ifsc"
+                  name="ifsc"
+                  value={ifsccode}
+                  onChange={(e) => setIfscCode(e.target.value)}
+                ></input>
+                </div>
+                {errors.ifsccode && (
+                  <p className="text-red-500 mt-2">{errors.ifsccode}</p>
+                )}
+              </p>
+
+              <p className="">
+                <label className="font-semibold text-lg">
+                  Aadhaar Card Number
+                </label>
+                <div className="relative">
+                  <FontAwesomeIcon
+                    icon={faIdCard}
+                    className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
+                  />
+                <input
+                  type="text"
+                  className="w-full p-2 pl-9 border-2 rounded-lg mt-3 "
+                  placeholder="Enter Aadhaar Card Number"
+                  id="aadhaar"
+                  name="aadhaar"
+                  value={aadhaarcardnumber}
+                  onChange={(e) => setAadhaarCardNumber(e.target.value)}
+                ></input>
+                </div>
+                {errors.aadhaarcardnumber && (
+                  <p className="text-red-500 mt-2">
+                    {errors.aadhaarcardnumber}
+                  </p>
+                )}
+              </p>
+
+              <button
+                className="bg-[#2774AE] mt-8 w-full py-2 text-white text-lg font-semibold rounded-lg"
+                type="submit"
+                disabled={isLoading} // Disable the button when isLoading is true
+              >
+                {isLoading ? "Registering..." : "Register"}
+              </button>
+              {registrationSuccess && (
+                <p className="text-green-500 mb-2">
+                  {" "}
+                  Registration Successfully!
+                </p>
               )}
-            </p> */}
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">First Name</label>
-              
-              <input
-                type="text"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="First Name"
-                id="fname"
-                name="fname"
-                value={firstname}
-                onChange={(e) => setFirstName(e.target.value)}
-              ></input>
-              {errors.firstname && (
-                <p className="text-red-500 mt-2">{errors.firstname}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Last Name</label>
-
-              <input
-                type="text"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Last Name"
-                id="lname"
-                name="lname"
-                value={lastname}
-                onChange={(e) => setLastName(e.target.value)}
-              ></input>
-              {errors.lastname && (
-                <p className="text-red-500 mt-2">{errors.lastname}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Email</label>
-
-              <input
-                type="email"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter Email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></input>
-              {errors.email && (
-                <p className="text-red-500 mt-2">{errors.email}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Phone Number</label>
-
-              <input
-                type="tel"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Phone Number"
-                id="pnumber"
-                name="pnumber"
-                value={phonenumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              ></input>
-              {errors.phonenumber && (
-                <p className="text-red-500 mt-2">{errors.phonenumber}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Date Of Birth</label>
-
-              <input
-                type="date"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter DOB"
-                id="dob"
-                name="dob"
-                value={dateofbirth}
-                onChange={(e) => setDateOfBirth(e.target.value)}
-              ></input>
-              {errors.dateofbirth && (
-                <p className="text-red-500 mt-2">{errors.dateofbirth}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Password</label>
-
-              <input
-                type="password"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter Password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
-              {errors.password && (
-                <p className="text-red-500 mt-2">{errors.password}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Confirm Password</label>
-
-              <input
-                type="password"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter Confirm Password"
-                id="cpassword"
-                name="cpassword"
-                value={confirmpassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              ></input>
-              {errors.confirmpassword && (
-                <p className="text-red-500 mt-2">{errors.confirmpassword}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Pan Card Number</label>
-
-              <input
-                type="text"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter PanCard Number"
-                id="pcard"
-                name="pcard"
-                value={pancard}
-                onChange={(e) => setPanCard(e.target.value)}
-              ></input>
-              {errors.pancard && (
-                <p className="text-red-500 mt-2">{errors.pancard}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Bank Account</label>
-
-              <input
-                type="text"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter Bank Account"
-                id="bankaccount"
-                name="bankaccount"
-                value={bankaccount}
-                onChange={(e) => setBankAccount(e.target.value)}
-              ></input>
-              {errors.bankaccount && (
-                <p className="text-red-500 mt-2">{errors.bankaccount}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">IFSC Code</label>
-
-              <input
-                type="text"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter IFSC Code"
-                id="ifsc"
-                name="ifsc"
-                value={ifsccode}
-                onChange={(e) => setIfscCode(e.target.value)}
-              ></input>
-              {errors.ifsccode && (
-                <p className="text-red-500 mt-2">{errors.ifsccode}</p>
-              )}
-            </p>
-
-            <p className="mt-5">
-              <label className="font-semibold text-lg">Aadhaar Card Number</label>
-
-              <input
-                type="text"
-                className="w-full p-2 border-2 rounded-lg mt-3"
-                placeholder="Enter Aadhaar Card Number"
-                id="aadhaar"
-                name="aadhaar"
-                value={aadhaarcardnumber}
-                onChange={(e) => setAadhaarCardNumber(e.target.value)}
-              ></input>
-              {errors.aadhaarcardnumber && (
-                <p className="text-red-500 mt-2">{errors.aadhaarcardnumber}</p>
-              )}
-            </p>
-
-            <button
-              className="bg-[#2774AE] mt-8 w-full py-2 text-white text-lg font-semibold rounded-lg"
-              type="submit"
-              disabled={isLoading} // Disable the button when isLoading is true
-            >
-              {isLoading ? "Registering..." : "Register"}
-            </button>
-            {registrationSuccess && (
-
-              <p className="text-green-500 mb-2"> Registration Successfully!</p>
-
-            )}
+            </div>
           </form>
         </div>
-      }
- {showSuccessPopup && (
+      )}
 
-<div className="fixed inset-0 flex items-center justify-center z-10">
+      {showSuccessPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-10">
+          <div className="bg-white p-8 rounded shadow-lg text-center">
+            <h2 className="text-2xl font-semibold text-green-500 mb-4">
+              Registration Successful
+            </h2>
 
-  <div className="bg-white p-8 rounded shadow-lg text-center">
+            <p className="text-gray-700">
+              Your request is successful and your form will be approved as soon
+              as possible.
+            </p>
 
-    <h2 className="text-2xl font-semibold text-green-500 mb-4">
+            <div className="mt-6">
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                onClick={() => setShowSuccessPopup(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showSuccessPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-10">
+          <div className="bg-white p-8 rounded shadow-lg text-center">
+            <h2 className="text-2xl font-semibold text-green-500 mb-4">
+              Registration Successful
+            </h2>
 
-      Registration Successful
+            <p className="text-gray-700">
+              Your request is successful and your form will be approved as soon
+              as possible.
+            </p>
 
-    </h2>
-
-    <p className="text-gray-700">
-
-      Your request is successful and your form will be approved as soon
-
-      as possible.
-
-    </p>
-
-    <div className="mt-6">
-
-      <button
-
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-
-        onClick={() => setShowSuccessPopup(false)}
-
-      >
-
-        Close
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-)}
- {showSuccessPopup && (
-
-<div className="fixed inset-0 flex items-center justify-center z-10">
-
-  <div className="bg-white p-8 rounded shadow-lg text-center">
-
-    <h2 className="text-2xl font-semibold text-green-500 mb-4">
-
-      Registration Successful
-
-    </h2>
-
-    <p className="text-gray-700">
-
-      Your request is successful and your form will be approved as soon
-
-      as possible.
-
-    </p>
-
-    <div className="mt-6">
-
-      <button
-
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-
-        onClick={() => setShowSuccessPopup(false)}
-
-      >
-
-        Close
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-)}
+            <div className="mt-6">
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                onClick={() => setShowSuccessPopup(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

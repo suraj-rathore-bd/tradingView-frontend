@@ -305,7 +305,7 @@ const sendingRegsiter=()=>{
 
             <p className="mt-5">
               <label className="font-semibold text-lg">First Name</label>
-
+              
               <input
                 type="text"
                 className="w-full p-2 border-2 rounded-lg mt-3"

@@ -3316,6 +3316,7 @@ const NewHome = () => {
           {/* .site-content-contain */}
         </div>
         {/* #page */}
+        {/* Header */}
       </>
     </>
   );

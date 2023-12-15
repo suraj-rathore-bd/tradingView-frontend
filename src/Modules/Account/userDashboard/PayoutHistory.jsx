@@ -3,12 +3,12 @@ import { IoPerson } from "react-icons/io5";
 import { MdLibraryBooks } from "react-icons/md";
 import { BsFillClipboard2DataFill } from "react-icons/bs";
 import { FaDollarSign } from "react-icons/fa6";
-import { servieUrl } from "../../env/env";
+import { servieUrl } from "../../../env/env";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDashboard, AiOutlineFundProjectionScreen, AiOutlineMoneyCollect, AiOutlineProfile, AiOutlineLock, AiOutlineLogout, AiOutlineCustomerService, AiOutlineHistory } from "react-icons/ai";
 import { GiTrade } from "react-icons/gi";
-import "./user.css"
-const UserDashboard = () => {
+import "../user.css"
+const PayoutHistory = () => {
   const navigate = useNavigate();
  
   const [base64Image, setBase64Image] = useState(null);
@@ -263,130 +263,34 @@ const UserDashboard = () => {
         </ul>
       </div>
     </div>
-    
   <div className="col-lg-10 col-sm-12">
-  <>
-       
- 
-       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  mx-10 md:mx-10 lg:mx-28 gap-10 m-2">
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">ACTIVE CUSTOMERS</h2>
-             <h1 className="font-bold">79</h1>
-           </div>
-           <span className="ml-4">
-             <IoPerson className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">BLOCKED CUSTOMERS</h2>
-             <h1 className="font-bold">0</h1>
-           </div>
-           <span className="ml-4">
-             <IoPerson className="text-5xl text-red-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL BLOGS</h2>
-             <h1 className="font-bold">3</h1>
-           </div>
-           <span className="ml-4">
-             <MdLibraryBooks className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL TRADE METHOD</h2>
-             <h1 className="font-bold">79</h1>
-           </div>
-           <span className="ml-4">
-             <MdLibraryBooks className="text-5xl text-green-500" />
-           </span>
-         </div>
-       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  gap-10 mx-10 md:mx-10 lg:mx-28  m-2">
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL DEPOSITS</h2>
-             <h1 className="font-bold">177</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL DEPOSIT AMOUNT</h2>
-             <h1 className="font-bold">664087.86$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm"> TOTAL WITHDRAW AMOUNT</h2>
-             <h1 className="font-bold">1556.11$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL WITHDRAW CHARGE AMOUNT</h2>
-             <h1 className="font-bold">56.19$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 mx-10 md:mx-10 lg:mx-28  m-2 gap-10">
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL REFERRAL BONUS</h2>
-             <h1 className="font-bold">10$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL BALANCE TRANSFER</h2>
-             <h1 className="font-bold">6</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL BALANCE TRANSFER AMOUNT</h2>
-             <h1 className="font-bold ">3440$</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL TRADES</h2>
-             <h1 className="font-bold">323</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-       </div>
-     </>
+<>
+<div className="min-h-screen flex items-center justify-center">
+      <div className="bg-white p-8 rounded shadow-md w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
+        <h2 className="text-2xl font-semibold mb-4">Transaction Table</h2>
+        <table className="w-full border">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border p-2">Username</th>
+              <th className="border p-2">Amount</th>
+              <th className="border p-2">Date</th>
+              <th className="border p-2">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row, index) => (
+              <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
+                <td className="border p-2">{row.username}</td>
+                <td className="border p-2">{row.amount}</td>
+                <td className="border p-2">{row.date}</td>
+                <td className="border p-2">{row.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</>
  
   </div>
   </div>
@@ -396,4 +300,10 @@ const UserDashboard = () => {
   );
 };
  
-export default UserDashboard;
+export default PayoutHistory;
+
+const data = [
+  { username: 'JohnDoe', amount: '$100', date: '2023-01-01', status: 'Paid' },
+  { username: 'AliceSmith', amount: '$150', date: '2023-01-02', status: 'Outstanding' },
+  // Add more data as needed
+];

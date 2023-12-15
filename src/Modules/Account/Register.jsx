@@ -1,7 +1,9 @@
+
+
 import React, { useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import { servieUrl } from "../../env/env";
-import A from "../../Assests/HomePageImages/Trading.png";
+import A from "../../Assests/HomePageImages/TradingImage1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressCard, faBuildingColumns, faCalendar, faCalendarDay, faCreditCard, faEnvelope, faIdCard, faLock, faPhone, faPiggyBank, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -276,13 +278,13 @@ function Register() {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-10 mx-10 md:mx-20 lg:mx-32 mt-10 md:mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-10 mx-10 md:mx-20 lg:mx-32 mt-10 md:mt-16 mb-10">
           <div className="flex justify-center items-center">
             <div className=" ">
             <img src={A} class="hidden md:block" />
             </div>
           </div>
-          <form onSubmit={sendOtp}>
+          <form onSubmit={sendOtp} >
             <h3 className="text-lg md:text-3xl font-bold text-[#0066b2] ">
               Register
             </h3>
@@ -291,10 +293,10 @@ function Register() {
               <p className="mt-2">
                 <label className="font-semibold text-lg">First Name</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faUser}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                   <input
                     type="text"
                     className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -313,10 +315,10 @@ function Register() {
               <p className="mt-2">
                 <label className="font-semibold text-lg">Last Name</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faUser}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="text"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -335,10 +337,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">Email</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faEnvelope}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="email"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -357,10 +359,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">Phone Number</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faPhone}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="tel"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -379,10 +381,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">Date Of Birth</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faCalendarDay}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="date"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -401,10 +403,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">Password</label>
                 <div className="relative flex ju item-center">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faLock}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500 "
-                  />
+                  /> */}
                 <input
                   type="password"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -425,10 +427,10 @@ function Register() {
                   Confirm Password
                 </label>
                 <div className="relative flex ju item-center">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faLock}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500 "
-                  />
+                  /> */}
                 <input
                   type="password"
                   className="w-full  p-2 pl-9 border-2 rounded-lg mt-3"
@@ -447,10 +449,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">Pan Card Number</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faAddressCard}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="text"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -469,10 +471,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">Bank Account</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faBuildingColumns}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="text"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -491,10 +493,10 @@ function Register() {
               <p className="">
                 <label className="font-semibold text-lg">IFSC Code</label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faCreditCard}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="text"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3"
@@ -515,10 +517,10 @@ function Register() {
                   Aadhaar Card Number
                 </label>
                 <div className="relative">
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faIdCard}
                     className="absolute pl-3 mt-8 transform -translate-y-1/2 text-gray-500"
-                  />
+                  /> */}
                 <input
                   type="text"
                   className="w-full p-2 pl-9 border-2 rounded-lg mt-3 "
@@ -537,7 +539,7 @@ function Register() {
               </p>
 
               <button
-                className="bg-[#2774AE] mt-8 w-full py-2 text-white text-lg font-semibold rounded-lg"
+                className="bg-[#2774AE] mt-8 w-full py-2 hover:bg-slate-100 text-white text-lg font-semibold rounded-lg"
                 type="submit"
                 disabled={isLoading} // Disable the button when isLoading is true
               >

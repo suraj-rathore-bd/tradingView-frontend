@@ -29,7 +29,16 @@ import AccountDetails from "./Modules/Admin/AccountDetails";
 import PrivacyPolicy from "./Modules/Main/PrivacyPolicy";
 import TermCondation from "./Modules/Main/TermCondation";
 import NewHome from "./Modules/Main/NewHome/NewHome";
-import Test from "./Modules/Test";
+import Test from "./Modules/Test"; 
+import ChangePassword from "./Modules/Account/userDashboard/ChangePassword";
+import PayoutHistory from "./Modules/Account/userDashboard/PayoutHistory";
+import SupportTicket from "./Modules/Account/userDashboard/SupportTicket";
+import UserAddFund from "./Modules/Account/userDashboard/UserAddFund";
+import UserEditProfit from "./Modules/Account/userDashboard/UserEditProfit";
+import UserLogout from "./Modules/Account/userDashboard/UserLogout";
+import UserTradeNow from "./Modules/Account/userDashboard/UserTradeNow";
+import UserTransaction from "./Modules/Account/userDashboard/UserTransaction";
+import UserWithdraw from "./Modules/Account/userDashboard/UserWithdraw";
 
 
 console.log("check", window.location.pathname.includes("adminpanel"))
@@ -79,6 +88,27 @@ function App() {
           <Route path="/" element={<NewHome/>}/>
           {/* <Route path ="/adminpanel" element={<AdminNavbar/>}/> */}
           {/* <Route path ="/user" element={<UserNavbar/>}/> */}
+
+
+          {/* userdashboard */}
+
+          <Route path='/change-password' element={<ChangePassword/>}/>
+          <Route path='/payout-history' element={<PayoutHistory/>}/>
+          <Route path='/support-ticket' element={<SupportTicket/>}/>
+          <Route path='/user-fund' element={<UserAddFund/>}/>
+          <Route path='/edit-profile' element={<UserEditProfit/>}/>
+          <Route path='/user-logout' element={<UserLogout/>}/>
+          <Route path='/trade-now' element={<UserTradeNow/>}/>
+          <Route path='/usertransaction' element={<UserTransaction/>}/>
+          <Route path='/user-withdraw' element={<UserWithdraw/>}/>
+
+
+
+
+
+
+
+
         </Routes>
           
      

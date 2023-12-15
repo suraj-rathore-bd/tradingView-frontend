@@ -17,7 +17,6 @@ import WithdrawForm from "../Account/WithdrawForm";
 import FundsPopup from "../Account/FundsPopup";
 import { servieUrl } from "../../env/env";
 
- 
 
 const Fund = () => {
 

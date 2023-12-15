@@ -3,12 +3,12 @@ import { IoPerson } from "react-icons/io5";
 import { MdLibraryBooks } from "react-icons/md";
 import { BsFillClipboard2DataFill } from "react-icons/bs";
 import { FaDollarSign } from "react-icons/fa6";
-import { servieUrl } from "../../env/env";
+import { servieUrl } from "../../../env/env";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDashboard, AiOutlineFundProjectionScreen, AiOutlineMoneyCollect, AiOutlineProfile, AiOutlineLock, AiOutlineLogout, AiOutlineCustomerService, AiOutlineHistory } from "react-icons/ai";
 import { GiTrade } from "react-icons/gi";
-import "./user.css"
-const UserDashboard = () => {
+import "../user.css"
+const UserEditProfit = () => {
   const navigate = useNavigate();
  
   const [base64Image, setBase64Image] = useState(null);
@@ -163,6 +163,27 @@ const UserDashboard = () => {
     console.log("base64", e.target.result);
   };
  
+
+
+  const [formData, setFormData] = useState({
+    name: '',
+    phoneNumber: '',
+    aadharCard: '',
+    panCard: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here, for example, send the data to the server
+    console.log(formData);
+  };
   return (
     <>
  
@@ -263,130 +284,81 @@ const UserDashboard = () => {
         </ul>
       </div>
     </div>
-    
   <div className="col-lg-10 col-sm-12">
   <>
-       
- 
-       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  mx-10 md:mx-10 lg:mx-28 gap-10 m-2">
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">ACTIVE CUSTOMERS</h2>
-             <h1 className="font-bold">79</h1>
-           </div>
-           <span className="ml-4">
-             <IoPerson className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">BLOCKED CUSTOMERS</h2>
-             <h1 className="font-bold">0</h1>
-           </div>
-           <span className="ml-4">
-             <IoPerson className="text-5xl text-red-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL BLOGS</h2>
-             <h1 className="font-bold">3</h1>
-           </div>
-           <span className="ml-4">
-             <MdLibraryBooks className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL TRADE METHOD</h2>
-             <h1 className="font-bold">79</h1>
-           </div>
-           <span className="ml-4">
-             <MdLibraryBooks className="text-5xl text-green-500" />
-           </span>
-         </div>
-       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4  gap-10 mx-10 md:mx-10 lg:mx-28  m-2">
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL DEPOSITS</h2>
-             <h1 className="font-bold">177</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL DEPOSIT AMOUNT</h2>
-             <h1 className="font-bold">664087.86$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm"> TOTAL WITHDRAW AMOUNT</h2>
-             <h1 className="font-bold">1556.11$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL WITHDRAW CHARGE AMOUNT</h2>
-             <h1 className="font-bold">56.19$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-       </div>
-       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 mx-10 md:mx-10 lg:mx-28  m-2 gap-10">
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL REFERRAL BONUS</h2>
-             <h1 className="font-bold">10$</h1>
-           </div>
-           <span className="ml-4">
-             {" "}
-             <FaDollarSign className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL BALANCE TRANSFER</h2>
-             <h1 className="font-bold">6</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL BALANCE TRANSFER AMOUNT</h2>
-             <h1 className="font-bold ">3440$</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-         <div className="shadow-lg p-10 flex items-center">
-           <div>
-             <h2 className="text-sm">TOTAL TRADES</h2>
-             <h1 className="font-bold">323</h1>
-           </div>
-           <span className="ml-4">
-             <BsFillClipboard2DataFill className="text-5xl text-green-500" />
-           </span>
-         </div>
-       </div>
-     </>
+  <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-full md:w-1/2 lg:w-1/3">
+        <h2 className="text-2xl font-semibold mb-4">User Information Form</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-600">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              pattern="[0-9]{10}"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="aadharCard" className="block text-sm font-medium text-gray-600">
+              Aadhar Card
+            </label>
+            <input
+              type="text"
+              id="aadharCard"
+              name="aadharCard"
+              value={formData.aadharCard}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              pattern="[0-9]{12}"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="panCard" className="block text-sm font-medium text-gray-600">
+              PAN Card
+            </label>
+            <input
+              type="text"
+              id="panCard"
+              name="panCard"
+              value={formData.panCard}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </>
  
   </div>
   </div>
@@ -396,4 +368,4 @@ const UserDashboard = () => {
   );
 };
  
-export default UserDashboard;
+export default UserEditProfit;

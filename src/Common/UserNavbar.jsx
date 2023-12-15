@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import LogoImage from "./NavbarImages/logo-no-background.png";
+import LogoImage from "./NavbarImages/logoNew.png";
 import whatsapp from "./NavbarImages/whatsaap.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -107,7 +107,7 @@ const UserNavbar = ({setUserType}) => {
         <div className="flex justify-between items-center px-5 md:px-10 py-2">
           <div className="">
             <Link to="/">
-            {/* <img src={LogoImage} className="w-[60px] h-[50px]"></img> */}
+            <img src={LogoImage} className="w-[60px] h-[50px]"></img>
             YourLogo
             </Link>
           </div>

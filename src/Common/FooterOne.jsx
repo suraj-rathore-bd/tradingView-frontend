@@ -1,5 +1,5 @@
 import React from "react";
-// import LogoImage from "./NavbarImages/logo-no-background.png";
+import LogoImage from "./NavbarImages/logoNew.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -16,14 +16,14 @@ const FooterOne = () => {
             <div className="container">
               <div className="row">
                 <div className="col-xl-4 col-lg-3 col-md-6 col-sm-12">
-                  {/* <div className="pbmit-footer-logo">
+                  <div className="pbmit-footer-logo">
                     <img
                       className="pbmit-main-logo"
-                      src="https://cleanfin-demo.pbminfotech.com/demo2/wp-content/uploads/sites/3/2023/07/logo-white.svg"
+                      src={LogoImage}
                       alt="Cleanfin Demo2"
                       title="Cleanfin Demo2"
                     />
-                  </div> */}
+                  </div>
                 </div>
                 <div className="col-xl-4 col-lg-5 col-md-6 col-sm-12 pbmit-footer-left">
                   <h3>Subscribe to our newsletter! Stay always in touch!</h3>{" "}

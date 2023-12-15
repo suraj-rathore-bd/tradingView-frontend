@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import whatsapp from "./NavbarImages/whatsaap.png";
-// import LogoImage from "./NavbarImages/logo-no-background.png";
+import LogoImage from "./NavbarImages/logoNew.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNewspaper,
@@ -78,7 +78,7 @@ const NavigationBar = () => {
         <div className=" flex justify-between items-center px-5 md:px-10 py-2 bg-white">
           <div className="">
             <Link to="/">
-              {/* <img src={LogoImage} className="w-[70px] h-[60px]"></img> */}
+              <img src={LogoImage} className="w-[70px] h-[60px]"></img>
             </Link>
           </div>
 

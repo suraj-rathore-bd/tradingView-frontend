@@ -52,7 +52,7 @@ const NewHome = () => {
           {/* #masthead */}
           <div className="site-content-contain ">
             <div className="site-content-wrap">
-              <div id="content" className="site-content container">
+              <div id="content" className="site-content ">
                 <div className="pbmit-header-search-form-wrapper">
                   <div className="pbmit-search-close">
                     <svg

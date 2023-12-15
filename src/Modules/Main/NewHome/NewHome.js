@@ -309,10 +309,7 @@ const NewHome = () => {
                                                         <i className="pbmit-cleanfin-icon pbmit-cleanfin-icon-global" />{" "}
                                                       </div>
                                                       <div className="pbmit-serv-cat">
-                                                        <a
-                                                          href=""
-                                                          rel="tag"
-                                                        >
+                                                        <a href="" rel="tag">
                                                           chart technology
                                                         </a>
                                                       </div>

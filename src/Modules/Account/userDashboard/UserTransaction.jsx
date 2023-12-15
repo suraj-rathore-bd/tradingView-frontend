@@ -17,6 +17,9 @@ import {
 } from "react-icons/ai";
 import { GiTrade } from "react-icons/gi";
 import "../user.css";
+import UserDashboard from "../UserDashboard";
+import "../../Account/data_table.css";
+
 const UserTransaction = () => {
   const navigate = useNavigate();
 
@@ -183,131 +186,85 @@ const UserTransaction = () => {
 
   return (
     <>
-      <div className="row">
-      <div className="min-h-screen flex   bg-gray-100">
-      <div className="lg:w-1/4 bg-gray-100 p-5">
-        <ul className="space-y-3">
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Dashboard" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Dashboard")}
-          >
-            <Link to="/UserDashboard" className="flex items-center">
-              <AiOutlineDashboard className="mr-2" />
-              Dashboard
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Transaction" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Transaction")}
-          >
-            <Link to="/usertransaction" className="flex items-center">
-              <BsFillClipboard2DataFill className="mr-2" />
-              Transaction
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Fund" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Fund")}
-          >
-            <Link to="/user-fund" className="flex items-center">
-              <AiOutlineFundProjectionScreen className="mr-2" />
-             Add Fund
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Withdraw" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Withdraw")}
-          >
-            <Link to="/user-withdraw" className="flex items-center">
-              <AiOutlineMoneyCollect className="mr-2" />
-              Withdraw
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Now" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Now")}
-          >
-            <Link to="/trade-now" className="flex items-center">
-              <GiTrade className="mr-2" />
-              Trade Now
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Profile" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Profile")}
-          >
-            <Link to="/edit-profile" className="flex items-center">
-              <AiOutlineProfile className="mr-2" />
-            Edit  Profile
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Password" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Password")}
-          >
-            <Link to="/change-password" className="flex items-center">
-              <AiOutlineLock className="mr-2" />
-              Change Password
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Logout" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Logout")}
-          >
-            <Link to="/user-logout" className="flex items-center">
-              <AiOutlineLogout className="mr-2" />
-              Logout
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Ticket" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Ticket")}
-          >
-            <Link to="/support-ticket" className="flex items-center">
-              <AiOutlineCustomerService className="mr-2" />
-              Support Ticket
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "History" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("History")}
-          >
-            <Link to="/payout-history" className="flex items-center">
-              <AiOutlineHistory className="mr-2" />
-              Payout History
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
-        <div className="col-lg-10 col-sm-12">
-          <>
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
-              <div className="bg-white p-8 rounded shadow-md w-full md:w-1/2 lg:w-1/3">
-                <h2 className="text-2xl font-semibold mb-4">Data Transition</h2>
-                <ul>
-                  {data.map((item) => (
-                    <li
-                      key={item.id}
-                      className={`mb-4 p-4 cursor-pointer transition-all ${
-                        selectedItem === item.id
-                          ? "bg-blue-100"
-                          : "hover:bg-gray-100"
-                      }`}
-                      onClick={() => handleSelectItem(item.id)}
-                    >
-                      <h3 className="text-lg font-semibold">{item.name}</h3>
-                      {selectedItem === item.id && (
-                        <p className="text-gray-600 mt-2">{item.description}</p>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+      <>
+        <UserDashboard>
+          <div className="py-md-5 py-3  flex items-center justify-center bg-gray-200">
+            <div className=" p-8 rounded shadow-md bg-gray-100 w-[800px]">
+              <h2 className="text-2xl font-semibold ">Data Transition</h2>
+              <div className="">
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>John Doe</td>
+                        <td>johndoe@example.com</td>
+                        <td>Debit</td>
+                        <td>$100</td>
+                      </tr>
+                      <tr>
+                        <td>Jane Smith</td>
+                        <td>janesmith@example.com</td>
+                        <td>Debit</td>
+                        <td>$75</td>
+                      </tr>
+                      <tr>
+                        <td>Alex Johnson</td>
+                        <td>alexjohnson@example.com</td>
+                        <td>Debit</td>
+                        <td>$120</td>
+                      </tr>
+                      <tr>
+                        <td>Emily Brown</td>
+                        <td>emilybrown@example.com</td>
+                        <td>Debit</td>
+                        <td>$50</td>
+                      </tr>
+                      <tr>
+                        <td>Mike Davis</td>
+                        <td>mikedavis@example.com</td>
+                        <td>Debit</td>
+                        <td>$90</td>
+                      </tr>
+                      <tr>
+                        <td>Sarah Lee</td>
+                        <td>sarahlee@example.com</td>
+                        <td>Debit</td>
+                        <td>$110</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
+              {/* <ul>
+                {data.map((item) => (
+                  <li
+                    key={item.id}
+                    className={`mb-4 p-4 cursor-pointer transition-all ${
+                      selectedItem === item.id
+                        ? "bg-blue-100"
+                        : "hover:bg-gray-100"
+                    }`}
+                    onClick={() => handleSelectItem(item.id)}
+                  >
+                    <h3 className="text-lg font-semibold">{item.name}</h3>
+                    {selectedItem === item.id && (
+                      <p className="text-gray-600 mt-2">{item.description}</p>
+                    )}
+                  </li>
+                ))}
+              </ul> */}
             </div>
-          </>
-        </div>
-      </div>
+          </div>
+        </UserDashboard>
+      </>
     </>
   );
 };

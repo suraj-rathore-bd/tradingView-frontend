@@ -172,110 +172,130 @@ const UserLogout = () => {
   const handleLogOut = () => {
     localStorage.removeItem("login");
     localStorage.removeItem("userData");
-    setUserType("0");
-    setIsDrawerOpen(false);
+    // setUserType("0");
+    // setIsDrawerOpen(false);
     window.location.reload();
   };
 
   return (
     <>
       <div className="row">
-      <div className="min-h-screen flex   bg-gray-100">
-      <div className="lg:w-1/4 bg-gray-100 p-5">
-        <ul className="space-y-3">
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Dashboard" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Dashboard")}
-          >
-            <Link to="/UserDashboard" className="flex items-center">
-              <AiOutlineDashboard className="mr-2" />
-              Dashboard
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Transaction" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Transaction")}
-          >
-            <Link to="/usertransaction" className="flex items-center">
-              <BsFillClipboard2DataFill className="mr-2" />
-              Transaction
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Fund" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Fund")}
-          >
-            <Link to="/user-fund" className="flex items-center">
-              <AiOutlineFundProjectionScreen className="mr-2" />
-             Add Fund
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Withdraw" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Withdraw")}
-          >
-            <Link to="/user-withdraw" className="flex items-center">
-              <AiOutlineMoneyCollect className="mr-2" />
-              Withdraw
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Now" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Now")}
-          >
-            <Link to="/trade-now" className="flex items-center">
-              <GiTrade className="mr-2" />
-              Trade Now
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Profile" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Profile")}
-          >
-            <Link to="/edit-profile" className="flex items-center">
-              <AiOutlineProfile className="mr-2" />
-            Edit  Profile
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Password" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Password")}
-          >
-            <Link to="/change-password" className="flex items-center">
-              <AiOutlineLock className="mr-2" />
-              Change Password
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Logout" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Logout")}
-          >
-            <Link to="/user-logout" className="flex items-center">
-              <AiOutlineLogout className="mr-2" />
-              Logout
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "Ticket" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("Ticket")}
-          >
-            <Link to="/support-ticket" className="flex items-center">
-              <AiOutlineCustomerService className="mr-2" />
-              Support Ticket
-            </Link>
-          </li>
-          <li
-            className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${selectedMenuItem === "History" ? "font-bold" : ""}`}
-            onClick={() => handleMenuItemClick("History")}
-          >
-            <Link to="/payout-history" className="flex items-center">
-              <AiOutlineHistory className="mr-2" />
-              Payout History
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <div className="min-h-screen flex   bg-gray-100">
+          <div className="lg:w-1/4 bg-gray-100 p-5">
+            <ul className="space-y-3">
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Dashboard" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Dashboard")}
+              >
+                <Link to="/UserDashboard" className="flex items-center">
+                  <AiOutlineDashboard className="mr-2" />
+                  Dashboard
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Transaction" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Transaction")}
+              >
+                <Link to="/usertransaction" className="flex items-center">
+                  <BsFillClipboard2DataFill className="mr-2" />
+                  Transaction
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Fund" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Fund")}
+              >
+                <Link to="/user-fund" className="flex items-center">
+                  <AiOutlineFundProjectionScreen className="mr-2" />
+                  Add Fund
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Withdraw" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Withdraw")}
+              >
+                <Link to="/user-withdraw" className="flex items-center">
+                  <AiOutlineMoneyCollect className="mr-2" />
+                  Withdraw
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Now" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Now")}
+              >
+                <Link to="/trade-now" className="flex items-center">
+                  <GiTrade className="mr-2" />
+                  Trade Now
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Profile" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Profile")}
+              >
+                <Link to="/edit-profile" className="flex items-center">
+                  <AiOutlineProfile className="mr-2" />
+                  Edit Profile
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Password" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Password")}
+              >
+                <Link to="/change-password" className="flex items-center">
+                  <AiOutlineLock className="mr-2" />
+                  Change Password
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Logout" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Logout")}
+              >
+                <Link to="/user-logout" className="flex items-center">
+                  <AiOutlineLogout className="mr-2" />
+                  Logout
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "Ticket" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("Ticket")}
+              >
+                <Link to="/support-ticket" className="flex items-center">
+                  <AiOutlineCustomerService className="mr-2" />
+                  Support Ticket
+                </Link>
+              </li>
+              <li
+                className={`flex items-center text-gray-700 hover:text-blue-500 cursor-pointer ${
+                  selectedMenuItem === "History" ? "font-bold" : ""
+                }`}
+                onClick={() => handleMenuItemClick("History")}
+              >
+                <Link to="/payout-history" className="flex items-center">
+                  <AiOutlineHistory className="mr-2" />
+                  Payout History
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="col-lg-10 col-sm-12">
           <>
             <p className="hover:bg-sky-500 hover:text-white border-b-2  p-2 w-32">

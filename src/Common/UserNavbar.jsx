@@ -108,7 +108,7 @@ const UserNavbar = ({setUserType}) => {
           <div className="">
             <Link to="/">
             <img src={LogoImage} className="w-[60px] h-[50px]"></img>
-            YourLogo
+            
             </Link>
           </div>
           <div className="fixed left-4 bottom-3">
